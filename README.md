@@ -20,8 +20,8 @@ public class TestRun extends Game {
 ```
 ## Step 3 - Make nodes
 Nodes are at the heart of Pengulu. Each node has connections to other nodes and choices to do things within the node.<br>
-The superconstructor takes three arguments: `connections`, `choices`, and `id`.<br>
-Make three files: `Plains.java`, `Forest.java`, `Mountains.java`, and `Cave.java`.
+The superconstructor takes three arguments: `connections`, ids of other nodes, `choices`, and the `id` of the node itself.<br>
+Make four new files: `Plains.java`, `Forest.java`, `Mountains.java`, and `Cave.java`.
 #### Plains.java
 ```java
 import com.pengu.pengulu.Node;
@@ -106,4 +106,5 @@ public class TestRun extends Game {
 }
 
 ```
-## Step 5 - 
+## Step 5 - Adding Items
+Create three new files: `Log.java`, `Coal.java`, and `Cobblestone.java`.
