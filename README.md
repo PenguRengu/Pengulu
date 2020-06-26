@@ -3,7 +3,7 @@
 Download the .jar and it to your project
 ## Step 2 - Create a the main class
 #### TestRun.java
-```
+```java
 import com.pengu.pengulu.*;
 
 public class TestRun extends Game {
@@ -23,7 +23,7 @@ Nodes are at the heart of Pengulu. Each node has connections to other nodes and 
 The superconstructor takes three arguments: `connections`, `choices`, and `id`.<br>
 Make three files: `Plains.java`, `Forest.java`, `Mountains.java`, and `Cave.java`.
 #### Plains.java
-```
+```java
 import com.pengu.pengulu.Node;
 
 public class Plains extends Node {
@@ -36,7 +36,7 @@ public class Plains extends Node {
 
 ```
 #### Forest.java
-```
+```java
 import com.pengu.pengulu.Node;
 
 public class Forest extends Node {
@@ -48,7 +48,7 @@ public class Forest extends Node {
 
 ```
 #### Mountains.java
-```
+```java
 import com.pengu.pengulu.Node;
 
 public class Mountains extends Node {
@@ -60,7 +60,7 @@ public class Mountains extends Node {
 }
 ```
 #### Cave.java
-```
+```java
 import com.pengu.pengulu.*;
 
 public class Cave extends Node {
