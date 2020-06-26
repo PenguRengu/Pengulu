@@ -13,7 +13,7 @@ public class TestRun extends Game {
 	}
 	
 	void go() {
-		
+		start();
 	}
 	
 }
@@ -107,6 +107,7 @@ public class TestRun extends Game {
 		addNode(new Mountains());
 		
 		setCurrentNode(Game.getNodeById("forest"));
+		start();
 	}
 
 }
@@ -154,3 +155,7 @@ public class Cobblestone extends ItemTemplate {
 ## Step 6 - Add Items to the Inventory
 Add this to `TestRun.java`:
 ```java
+InventoryManager.addItem(new Log(0));
+InventoryManager.addItem(new Cobblestone(0));
+InventoryManager.addItem(new Coal(0));
+```
