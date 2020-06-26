@@ -1,6 +1,6 @@
 # Get started
 ## Step 1
-Download the .jar and it to your project
+<a href="https://github.com/PenguRengu/Pengulu/releases/tag/1.0">Download</a> the .jar and it to your project
 ## Step 2 - Create a the main class
 #### TestRun.java
 ```java
@@ -74,8 +74,36 @@ public class Cave extends Node {
 ```
 ## Step 4 - Add nodes to the game
 First, make sure all the nodes know the game they are a part of.<br>
-Add this to the `go` method.
-#### TestRun.java
+Add this to the `go` method in `TestRun`:
+```java
+Node.setGame(this);
 ```
+Then we add all our nodes:
+```java
+addNode(new Forest());
+addNode(new Plains());
+addNode(new Cave());
+addNode(new Mountains());
+```
+`TestRun.java` should now look like this:
+```java
+import com.pengu.pengulu.*;
+
+public class TestRun extends Game {
+	
+	public static void main(String[] args) {
+		new TestRun().go();
+	}
+	
+	void go() {
+		Node.setGame(this);
+		addNode(new Forest());
+		addNode(new Plains());
+		addNode(new Cave());
+		addNode(new Mountains());
+	}
+
+}
 
 ```
+## Step 5 - 
