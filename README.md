@@ -1,6 +1,6 @@
 # Get started
 ## Step 1
-Download the .jar and and it to your project
+Download the .jar and it to your project
 ## Step 2 - Create a the main class
 #### TestRun.java
 ```
