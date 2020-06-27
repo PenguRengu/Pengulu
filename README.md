@@ -360,7 +360,7 @@ public class Cave extends Node implements InputListener {
 ```
 ## Step 9 - Display the Inventory
 Displaying the inventory should be a choice no matter which node you are in.<br>
-Set "display inventory" as a universal choice in the `go` of `TestRun.java`:
+Set `"display inventory"` as a universal choice in the `go` method of `TestRun.java`:
 ```java
 Node.setUniversalChoices(new String[] {"display inventory"});
 ```
