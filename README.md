@@ -13,11 +13,12 @@ public class TestRun extends Game {
 	}
 	
 	void go() {
-		start();
+		start(); // 1
 	}
 	
 }
 ```
+1) This `start`s the game.
 ## Step 3 - Make Nodes
 Nodes are at the heart of Pengulu. Each node has connections to other nodes and choices to do things within the node.<br>
 The superconstructor takes three arguments: `connections`, ids of other nodes, `choices`, and the `id` of the node itself.<br>
