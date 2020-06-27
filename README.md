@@ -153,9 +153,37 @@ public class Cobblestone extends ItemTemplate {
 }
 ```
 ## Step 6 - Add Items to the Inventory
-Add this to `TestRun.java`:
+Add this to the `go` methoc in `TestRun.java`:
 ```java
 InventoryManager.addItem(new Log(0));
 InventoryManager.addItem(new Cobblestone(0));
 InventoryManager.addItem(new Coal(0));
+```
+`TestRun.java` should now look like this:
+```java
+import com.pengu.pengulu.*;
+
+public class TestRun extends Game {
+	
+	public static void main(String[] args) {
+		new TestRun().go();
+	}
+	
+	void go() {
+		Node.setGame(this);
+		addNode(new Forest());
+		addNode(new Plains());
+		addNode(new Cave());
+		addNode(new Mountains());
+		
+		InventoryManager.addItem(new Log(0));
+		InventoryManager.addItem(new Cobblestone(0));
+		InventoryManager.addItem(new Coal(0));
+		
+		setCurrentNode(Game.getNodeById("forest"));
+		start();
+	}
+
+}
+
 ```
