@@ -201,12 +201,16 @@ Add a `respond` method so it responds to the `"mine trees"` choice:
 ```java
 @Override
 public void respond(String choice) {
-	int choiceIndex = getChoiceIndex(choice);
+	int choiceIndex = getChoiceIndex(choice); // 1
 	if (choiceIndex == 2) {
-		Game.displayln("how many?");
-		requestInput();
+		Game.displayln("how many?"); // 2
+		requestInput(); // 3
 	} else {
-		runNode(choiceIndex);
+		runNode(choiceIndex); // 4
 	}
 }
 ```
+1) `getChoiceIndex(choice)` returns the index of the choice made
+2) `Game.displayln(message)` displays a `message` on the screen
+3) `requestInput()` requests user input
+4) `runNode(choiceIndex)` runs a node from the `connections`
