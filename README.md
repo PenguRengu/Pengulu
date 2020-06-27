@@ -185,5 +185,28 @@ public class TestRun extends Game {
 	}
 
 }
-
+```
+## Step 7 - Mining Logs
+Add an additional choice in the constructor of `Forest.java`:
+```java
+public Forest() {
+	super(new String[] {"plains", "cave", "mine trees"}, new String[] {"plains", "cave"}, "forest");
+}
+```
+Modify `Forest.java` so it implements `InputListener`:
+```java
+public class Forest extends Node implements InputListener {
+```
+Add a `respond` method so it responds to the `"mine trees"` choice:
+```java
+@Override
+public void respond(String choice) {
+	int choiceIndex = getChoiceIndex(choice);
+	if (choiceIndex == 2) {
+		Game.displayln("how many?");
+		requestInput();
+	} else {
+		runNode(choiceIndex);
+	}
+}
 ```
