@@ -314,7 +314,7 @@ public void onInput(String inputText) {
 }
 ```
 The final `Cave.java` should like this:
-```
+```java
 import com.pengu.pengulu.*;
 
 public class Cave extends Node implements InputListener {
@@ -356,4 +356,54 @@ public class Cave extends Node implements InputListener {
 	
 }
 
+```
+## Step 9 - Display the Inventory
+Displaying the inventory should be a choice no matter which node you are in.<br>
+Set "display inventory" as a universal choice in the `go` of `TestRun.java`:
+```java
+Node.setUniversalChoices(new String[] {"display inventory"});
+```
+Modify `TestRun.java` so it implements `UniversalChoiceListener`:
+```java
+public class TestRun extends Game implements UniversalChoiceListener {
+```
+Add a `respond` method:
+```java
+@Override
+public void respond(String choice) {
+	InventoryManager.display();
+}
+```
+The final `TestRun.java` should look like this:
+```java
+import com.pengu.pengulu.*;
+
+public class TestRun extends Game implements UniversalChoiceListener {
+	
+	public static void main(String[] args) {
+		new TestRun().go();
+	}
+	
+	void go() {
+		Node.setGame(this);
+		Node.setUniversalChoices(new String[] {"display inventory"});
+		addNode(new Forest());
+		addNode(new Plains());
+		addNode(new Cave());
+		addNode(new Mountains());
+		
+		InventoryManager.addItem(new Log(0));
+		InventoryManager.addItem(new Cobblestone(0));
+		InventoryManager.addItem(new Coal(0));
+		
+		setCurrentNode(Game.getNodeById("forest"));
+		start();
+	}
+
+	@Override
+	public void respond(String choice) {
+		InventoryManager.display();
+	}
+	
+}
 ```
