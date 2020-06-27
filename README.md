@@ -197,7 +197,7 @@ Modify `Forest.java` so it implements `InputListener`:
 ```java
 public class Forest extends Node implements InputListener {
 ```
-Add a `respond` method so it responds to the `"mine trees"` choice:
+Add a `respond` method so the node responds to the `"mine trees"` choice:
 ```java
 @Override
 public void respond(String choice) {
@@ -210,7 +210,60 @@ public void respond(String choice) {
 	}
 }
 ```
-1) `getChoiceIndex(choice)` returns the index of the choice made
-2) `Game.displayln(message)` displays a `message` on the screen
-3) `requestInput()` requests user input
-4) `runNode(choiceIndex)` runs a node from the `connections`
+1) `getChoiceIndex(choice)` returns the index of the choice made.
+2) `Game.displayln(message)` displays a `message` on the screen.
+3) `requestInput()` requests user input.
+4) `runNode(choiceIndex)` runs a node from the `connections`<br>
+Add an `onInput` method so the node responds to the requested input:
+```java
+@Override
+public void onInput(String inputText) {
+	int treeCount = Integer.parseInt(inputText);
+	if (treeCount > 5) {
+		Game.displayln("number of trees can't be greater than 5");
+	} else {
+		Game.displayln("mining " + treeCount + " trees...");
+		InventoryManager.incrementItem(new Log(treeCount)); // 1
+	}
+	
+	runAgain(); // 2
+}
+```
+1) `InventoryManager.incrementItem(item)` or `InventoryManager.incrementItem(item, amount)` increments the quantity of the `item` in the inventory by `amount`.
+2) `runAgain()` runs the node again.<br>
+The final `Forest.java` should look like this:
+```java
+import com.pengu.pengulu.*;
+
+public class Forest extends Node implements InputListener {
+	
+	public Forest() {
+		super(new String[] {"plains", "cave", "mine trees"}, new String[] {"plains", "cave"}, "forest");
+	}
+	
+	@Override
+	public void respond(String choice) {
+		int choiceIndex = getChoiceIndex(choice);
+		if (choiceIndex == 2) {
+			Game.displayln("how many?");
+			requestInput();
+		} else {
+			runNode(choiceIndex);
+		}
+	}
+
+	@Override
+	public void onInput(String inputText) {
+		int treeCount = Integer.parseInt(inputText);
+		if (treeCount > 5) {
+			Game.displayln("number of trees can't be greater than 5");
+		} else {
+			Game.displayln("mining " + treeCount + " trees...");
+			InventoryManager.incrementItem(new Log(treeCount));
+		}
+		
+		runAgain();
+	}
+	
+}
+```
